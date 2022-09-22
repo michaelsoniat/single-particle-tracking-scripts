@@ -20,5 +20,5 @@ This should create a set of .mat files. These can be called to Matlab individual
 
 Additionally, you can run the analyzeMats.m Matlab code to analyze all new .mat simultaneously to make a new .mat file containing all processivity and velocity values. To do this, run the analyzeMats.m file in Matlab. This will ask you to select the files of interest. Pick the .mat files by shift-clicking all of them. This should create two new set of .mat files which are for named Process and Rate.
 
-Myler, L.R., Gallardo, I.F., Zhou, Y., Gong, F., Yang, S.H., Wold, M.S., Miller, K.M., Paull, T.T., and Finkelstein, I.J. (2016). Single-molecule imaging reveals
+**Please Cite:** Myler, L.R., Gallardo, I.F., Zhou, Y., Gong, F., Yang, S.H., Wold, M.S., Miller, K.M., Paull, T.T., and Finkelstein, I.J. (2016). Single-molecule imaging reveals
 the mechanism of Exo1 regulation by single-stranded DNA binding proteins. Proc. Natl. Acad. Sci. USA 113, E1170–E1179.
