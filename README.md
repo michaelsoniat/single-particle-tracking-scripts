@@ -16,9 +16,9 @@ F = final plateau (the final frames where molecule does not move (similar to S)
 
 Finally, hit [A] to accept the data and save it or [Q] to disregard the plot and not save the data from that plot. 
 
-This should create a set of .mat files. These can be called to Matlab individually and contain a structure called molec that contains all useful information such asmolec.digest_rate and molec.x/molec.y.
+This should create a set of .mat files. These can be called to Matlab individually and contain a structure called molec that contains all useful information such as molec.digest_rate and molec.x/molec.y.
 
-Additionally, you can run the analyzeMats.m Matlab code to analyze all new .mat simultaneously to make a new .mat file containing all processivity and velocity values. To do this, run the analyzeMats.m file in Matlab. This will ask you to select the files of interest. Pick the .mat files by shift-clicking all of them. This should create two new set of .mat files which are for named Process and Rate.
+Additionally, you can run the analyzeMats.m Matlab code to analyze all new .mat simultaneously and making a new .mat file containing all processivity and velocity values. To do this, run the analyzeMats.m file in Matlab. This will ask you to select the files of interest. Pick the .mat files by shift-clicking all of them. This should create two new set of .mat files which are for named Process and Rate.
 
 **Please Cite:** Myler, L.R., Gallardo, I.F., Zhou, Y., Gong, F., Yang, S.H., Wold, M.S., Miller, K.M., Paull, T.T., and Finkelstein, I.J. (2016). Single-molecule imaging reveals
 the mechanism of Exo1 regulation by single-stranded DNA binding proteins. Proc. Natl. Acad. Sci. USA 113, E1170–E1179.
