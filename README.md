@@ -1,27 +1,77 @@
-# Tracking-Code
+This is a collection of legacy scripts for rudimentary particle tracking and trajectory analysis with the [Fiji"](https://fiji.sc/) image processing package. Particles are tracked in one dimension by fitting the point spread function to a 2D Gaussian. The resulting trajectories are analyzed via a series of MATLAB scripts, as described below.
 
-**Drift Correction**
-To correct for sample drifting on the XY-stage plane, crop a quantum dot or other fluorphore that is fixed to the slide surface as a reference in Fiji. After saving as a tiff file, run IJF_Tracking.py by dragging it into Fiji and then hitting run which will output two files a results.tif and a .txt file with tracked results. If the program messes up on certain frames, the center can be manually added by going to Analyze>Tools>ROI Manager and adding an ROI to the list. The tracking program will automatically take into account this ROI as the center of the particle of interest. Following tracking, run registration-translatio-021115.ijm in Fiji. This will ask you to select the files of interest. First, pick the .txt file for the tracking of the background fluorophore. Then select the original movie which needs to be drift corrected. After run, this will output a new tiff file that has been drift corrected with the extention -registered which can be used for further data analysis. 
+Please see [Alternative Packages](#alternative-packages) for newer and more general particle tracking workflows.
 
-**Cropping**
-The first step of tracking moving molecules is to crop out all of the molecules of interest in Fiji. Save the cropped images as tiff file so that all molecules can be tracked back to their position on the field. 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
 
-**Tracking**
-After compiling a set of cropped molecules of interest, individually select and open those molecules in Fiji. Next, make sure that the frame scale is correct and crop to avoid any extraneous particles that might throw off the tracking program. Then, after saving that Analysis version of the file, run IJF_Tracking.py by dragging it into Fiji and then hitting run which will output two files a results.tif and a .txt file with tracked results. 
+- [Table of Contents](#table-of-contents)
+- [Using this package](#using-this-package)
+    - [Drift Correction](#drift-correction)
+    - [Cropping](#cropping)
+    - [Tracking](#tracking)
+    - [Analysis](#analysis)
+- [Citations](#citations)
+- [Alternative Packages](#alternative-packages)
 
-**Analysis**
-Once several .txt files have been created from the tracking program, they should be analyzed with the ppfit_digest program in Matlab. Add the ppfit_digest.m file to the same folder as the .txt files along with the uigetfile2.m. In Matlab, in the prompt screen type ppfit_digest(# of kb/pixel, # of sec/frame). This will ask you to select the files of interest. Pick the .txt files by shift-clicking all of them. Then, it will ask you to select the regions of interest from each graph. Click and drag with the mouse to select the points of interest for each category and hit the letter key corresponding to that category to save those points as part of the category. The categories and their keys are below:
+<!-- markdown-toc end -->
 
-S = start plateau (the first frames in which molecule does not move). If molecule moves right away, simply select the first couple points to determine the start point.
-D = decay slope (the regions where molecule moves in a straight line)
-X = second slope (occasionally, molecules will pause then begin again, and this plots the slope of that movement)
-F = final plateau (the final frames where molecule does not move (similar to S)
 
-Finally, hit [A] to accept the data and save it or [Q] to disregard the plot and not save the data from that plot. 
+# Using this package #
 
-This should create a set of .mat files. These can be called to Matlab individually and contain a structure called molec that contains all useful information such as molec.digest_rate and molec.x/molec.y.
+The workflow below captures how we analyze the motion of fluorescent proteins on laminar flow-stretched DNA molecules.
 
-Additionally, you can run the analyzeMats.m Matlab code to analyze all new .mat simultaneously and to create a new .mat file that combines all processivity and velocity values into a single file. To do this, run the analyzeMats.m file in Matlab. This will ask you to select the files of interest. Pick the .mat files by shift-clicking all of them. This should create two new set of .mat files which are  named Process and Rate.
+## Drift Correction ##
 
-**Please Cite:** Myler, L.R., Gallardo, I.F., Zhou, Y., Gong, F., Yang, S.H., Wold, M.S., Miller, K.M., Paull, T.T., and Finkelstein, I.J. (2016). Single-molecule imaging reveals
-the mechanism of Exo1 regulation by single-stranded DNA binding proteins. Proc. Natl. Acad. Sci. USA 113, E1170–E1179.
+For long-term imaging experiments, the microscope stage can drift significantly in the x-y plane. To correct for sample drifting, select several fluorophores that are fixed to the flowcell surface. Crop these reference particles as a tiff stack in FIJI and run `IJF_Tracking.py` by dragging it into FIJI and then hitting "run." This script outputs two files: (1) results.tif and (2) results.txt, which has x-y coordinates for the particle position in each TIFF frame. 
+
+Note: If the script loses the particle position on some frames, the center can be manually added by going to Analyze>Tools>ROI Manager and adding a point ROI to the list. The tracking script will automatically fit a 2D Gaussian near this ROI for that frame.
+
+After obtaining x-y coordinates for the stationary particle, run `registration-translatio-021115.ijm` in FIJI. This will ask you to select the files of interest. First, pick the txt file containing the x-y coordinates for each frame of the stationary fluorophore. Then select the TIFF stack that needs to be drift-corrected. This script will output a new tiff file that has been drift-corrected for further data analysis. 
+
+## Cropping ##
+
+The goal of this step is to reduce the chance that the particle tracking script will lose its focus on the particle of interest and start tracking another particle that may be adjacent to it. 
+
+Crop out the molecules of interest in FIJI. Make sure that the frame scale is correct and that the ROI avoids all particles that might throw off the tracking program. Save the cropped images as separate TIFF stacks for the next step
+
+## Tracking ##
+
+Select and open the cropped TIFF stacks in FIJI. Run `IJF_Tracking.py` by dragging it into FIJI and then hitting run which will output two files, a results.tif and a txt file with the x-y coordinates for each TIFF frame. 
+
+## Analysis ##
+
+We use [MATLAB](https://www.mathworks.com/products/matlab.html) scripts with a rudimentary user interface to extract useful information from particle trajectories.
+
+The `ppfit_digest.m` script fits a subset of each particle trajectory to a piecewise polynomial. This script also uses [uigetfile2](https://www.mathworks.com/matlabcentral/fileexchange/9254-uigetfile2) to improve the file selection user interface. I suggest you copy `uigetfile2.m into the same folder as `ppfit_`digest.m`. 
+
+In MATLAB, run `ppfit_digest(kb_per_pixel, sec_per_frame)`. The first parameter is a conversion factor between kilobases and pixels and the second converts between seconds and frames. These settings depend on the microscope and image acquisition settings.
+
+When prompted, select the TXT files with the drift-corrected trajectories. The script will then display the particle trajectory on a graph. Click and drag with the mouse to select the points of interest that define a distinct sub-trajectory (i.e., a paused state or a translocating state). The script defines the following key shortcuts for fitting these trajectories to piecewise polynomials:
+
+``` 
+s = start (the first frames in which the molecule does not move). If molecule moves right away, simply select the first couple points to determine the starting point.
+
+d = downward slope (the regions where molecule moves in an approximately straight line, e.g., DNA unwinding by a helicase)
+x = second slope (occasionally, molecules will pause then begin again, and this plots the slope of that movement)
+f = final plateau (the final frames where molecule does not move (similar to [s])
+
+a = accept the data and save it
+q = disregard this trajectory and move on to the next one
+
+```
+Fitting trajectories to polynomials will create a set of MAT files that contain a structure that contains the piecewise polynomial fits.
+
+Additionally, you can run `analyzeMats.m` to analyze all new MAT files simultaneously. Running this script will ask you to select the files of interest. Pick the MAT files by shift-clicking all of them. The output is a MAT file with summary statistics about the analyzed trajectories.
+
+# Citations #
+
+If you find this script useful, please cite:
+
+Finkelstein IJ, Visnapuu ML, Greene EC. Single-molecule imaging reveals mechanisms of protein disruption by a DNA translocase. Nature. 2010 Dec 16;468(7326):983-7. doi: [10.1038/nature09561](https://doi.org/10.1038/nature09561). Epub 2010 Nov 24. PMID: 21107319; PMCID: [Single-molecule imaging reveals mechanisms of protein disruption by a DNA translocase - PubMed](https://pubmed.ncbi.nlm.nih.gov/21107319/).
+
+# Alternative Packages #
+This script was developed to track single-particle trajectories in one dimension and has been superseded by much more powerful packages for more detailed trajectory analysis. The incomplete list below summarizes a few resources to get the user started.
+
+- eLife paper and link
+- anything else? zzz-@Mike, please add link
