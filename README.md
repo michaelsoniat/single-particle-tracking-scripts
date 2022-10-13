@@ -1,4 +1,4 @@
-This is a collection of legacy scripts for rudimentary particle tracking and trajectory analysis with the [Fiji"](https://fiji.sc/) image processing package. Particles are tracked in one dimension by fitting the point spread function to a 2D Gaussian. The resulting trajectories are analyzed via a series of MATLAB scripts, as described below.
+This is a collection of legacy scripts for rudimentary particle tracking and trajectory analysis with the [FIJI](https://fiji.sc/) image processing package. Particles are tracked in one dimension by fitting the point spread function to a 2D Gaussian. The resulting trajectories are analyzed via a series of MATLAB scripts, as described below.
 
 Please see [Alternative Packages](#alternative-packages) for newer and more general particle tracking workflows.
 
@@ -33,7 +33,7 @@ After obtaining x-y coordinates for the stationary particle, run `registration-t
 
 The goal of this step is to reduce the chance that the particle tracking script will lose its focus on the particle of interest and start tracking another particle that may be adjacent to it. 
 
-Crop out the molecules of interest in FIJI. Make sure that the frame scale is correct and that the ROI avoids all particles that might throw off the tracking program. Save the cropped images as separate TIFF stacks for the next step
+Crop out the molecules of interest in FIJI. Make sure that the frame scale is correct and that the ROI avoids all particles that might throw off the tracking program. Save the cropped images as separate TIFF stacks for the next step.
 
 ## Tracking ##
 
@@ -43,7 +43,7 @@ Select and open the cropped TIFF stacks in FIJI. Run `IJF_Tracking.py` by draggi
 
 We use [MATLAB](https://www.mathworks.com/products/matlab.html) scripts with a rudimentary user interface to extract useful information from particle trajectories.
 
-The `ppfit_digest.m` script fits a subset of each particle trajectory to a piecewise polynomial. This script also uses [uigetfile2](https://www.mathworks.com/matlabcentral/fileexchange/9254-uigetfile2) to improve the file selection user interface. I suggest you copy `uigetfile2.m into the same folder as `ppfit_`digest.m`. 
+The `ppfit_digest.m` script fits a subset of each particle trajectory to a piecewise polynomial. This script also uses [uigetfile2](https://www.mathworks.com/matlabcentral/fileexchange/9254-uigetfile2) to improve the file selection user interface. I suggest you copy `uigetfile2.m` into the same folder as `ppfit_digest.m`. 
 
 In MATLAB, run `ppfit_digest(kb_per_pixel, sec_per_frame)`. The first parameter is a conversion factor between kilobases and pixels and the second converts between seconds and frames. These settings depend on the microscope and image acquisition settings.
 
@@ -68,10 +68,10 @@ Additionally, you can run `analyzeMats.m` to analyze all new MAT files simultane
 
 If you find this script useful, please cite:
 
-Finkelstein IJ, Visnapuu ML, Greene EC. Single-molecule imaging reveals mechanisms of protein disruption by a DNA translocase. Nature. 2010 Dec 16;468(7326):983-7. doi: [10.1038/nature09561](https://doi.org/10.1038/nature09561). Epub 2010 Nov 24. PMID: 21107319; PMCID: [Single-molecule imaging reveals mechanisms of protein disruption by a DNA translocase - PubMed](https://pubmed.ncbi.nlm.nih.gov/21107319/).
+Finkelstein IJ, Visnapuu ML, Greene EC. Single-molecule imaging reveals mechanisms of protein disruption by a DNA translocase. Nature. 2010 Dec 16;468(7326):983-7. doi: [10.1038/nature09561](https://doi.org/10.1038/nature09561). Epub 2010 Nov 24. PMID: 21107319; PMCID: [PMC3230117](https://pubmed.ncbi.nlm.nih.gov/21107319/).
 
 # Alternative Packages #
-This script was developed to track single-particle trajectories in one dimension and has been superseded by much more powerful packages for more detailed trajectory analysis. The incomplete list below summarizes a few resources to get the user started.
+This script was developed to track single-particle trajectories in one dimension and has been superseded by much more powerful packages. The incomplete list below summarizes a few resources to get the user started.
 
 - eLife paper and link
 - anything else? zzz-@Mike, please add link
