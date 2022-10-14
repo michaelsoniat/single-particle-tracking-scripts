@@ -73,7 +73,7 @@ Finkelstein IJ, Visnapuu ML, Greene EC. Single-molecule imaging reveals mechanis
 # Alternative Packages #
 This script was developed to track single-particle trajectories in one dimension and has been superseded by much more powerful packages. The incomplete list below summarizes a few resources to get the user started.
 
-**Mars**
+**Mars-Molecule Archive Suite**
 
 Citation: Nadia M Huisjes Thomas M Retzer Matthias J Scherr Rohit Agarwal Lional Rajappa Barbara Safaric Anita Minnen Karl E Duderstadt (2022) Mars, a molecule archive suite for reproducible analysis and reporting of single-molecule properties from bioimages eLife 11:e75899.
 
