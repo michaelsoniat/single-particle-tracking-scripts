@@ -73,5 +73,8 @@ Finkelstein IJ, Visnapuu ML, Greene EC. Single-molecule imaging reveals mechanis
 # Alternative Packages #
 This script was developed to track single-particle trajectories in one dimension and has been superseded by much more powerful packages. The incomplete list below summarizes a few resources to get the user started.
 
-- eLife paper and link
-- anything else? zzz-@Mike, please add link
+Mars
+Nadia M Huisjes Thomas M Retzer Matthias J Scherr Rohit Agarwal Lional Rajappa Barbara Safaric Anita Minnen Karl E Duderstadt (2022) Mars, a molecule archive suite for reproducible analysis and reporting of single-molecule properties from bioimages eLife 11:e75899.
+
+Trackmate
+Tinevez, J.-Y., Perry, N., Schindelin, J., Hoopes, G. M., Reynolds, G. D., Laplantine, E., … Eliceiri, K. W. (2017). TrackMate: An open and extensible platform for single-particle tracking. Methods, 115, 80–90. doi:10.1016/j.ymeth.2016.09.016
