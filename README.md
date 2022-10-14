@@ -79,4 +79,5 @@ Citation: Nadia M Huisjes Thomas M Retzer Matthias J Scherr Rohit Agarwal Lional
 
 **Trackmate**
 
-Citation: Tinevez, J.-Y., Perry, N., Schindelin, J., Hoopes, G. M., Reynolds, G. D., Laplantine, E., … Eliceiri, K. W. (2017). TrackMate: An open and extensible platform for single-particle tracking. Methods, 115, 80–90. doi:10.1016/j.ymeth.2016.09.016
+Citation: Tinevez, J.-Y., Perry, N., Schindelin, J., Hoopes, G. M., Reynolds, G. D., Laplantine, E., … Eliceiri, K. W. (2017). TrackMate: An open and extensible platform for single-particle tracking. Methods, 115, 80–90. [doi:10.1016/j.ymeth.2016.09.016](http://doi.org/10.1016/j.ymeth.2016.09.016)
+
