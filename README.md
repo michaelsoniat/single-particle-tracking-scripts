@@ -75,9 +75,9 @@ This script was developed to track single-particle trajectories in one dimension
 
 **Mars-Molecule Archive Suite**
 
-Citation: Huisjes NM, Retzer TM, Scherr MJ, Agarwal R, Rajappa L, Safaric B, Minnen A, Duderstadt KE. Mars, a molecule archive suite for reproducible analysis and reporting of single-molecule properties from bioimages. eLife. 2022 11:e75899. [doi: 10.7554/eLife.75899](https://doi.org/10.7554/eLife.75899)
+Citation: Huisjes NM, Retzer TM, Scherr MJ, Agarwal R, Rajappa L, Safaric B, Minnen A, Duderstadt KE. Mars, a molecule archive suite for reproducible analysis and reporting of single-molecule properties from bioimages. eLife. 2022, 11:e75899. [doi: 10.7554/eLife.75899](https://doi.org/10.7554/eLife.75899)
 
 **Trackmate**
 
-Citation: Tinevez JY, Perry N, Schindelin J, Hoopes GM, Reynolds GD, Laplantine E, Bednarek SY, Shorte SL, Eliceiri, KW. TrackMate: An open and extensible platform for single-particle tracking. Methods. 2017 115, 80–90. [doi: 10.1016/j.ymeth.2016.09.016](http://doi.org/10.1016/j.ymeth.2016.09.016)
+Citation: Tinevez JY, Perry N, Schindelin J, Hoopes GM, Reynolds GD, Laplantine E, Bednarek SY, Shorte SL, Eliceiri, KW. TrackMate: An open and extensible platform for single-particle tracking. Methods. 2017, 115, 80–90. [doi: 10.1016/j.ymeth.2016.09.016](http://doi.org/10.1016/j.ymeth.2016.09.016)
 
