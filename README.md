@@ -75,7 +75,7 @@ This script was developed to track single-particle trajectories in one dimension
 
 **Mars-Molecule Archive Suite**
 
-Citation: Nadia M Huisjes Thomas M Retzer Matthias J Scherr Rohit Agarwal Lional Rajappa Barbara Safaric Anita Minnen Karl E Duderstadt (2022) Mars, a molecule archive suite for reproducible analysis and reporting of single-molecule properties from bioimages eLife 11:e75899.
+Citation: Nadia M Huisjes Thomas M Retzer Matthias J Scherr Rohit Agarwal Lional Rajappa Barbara Safaric Anita Minnen Karl E Duderstadt (2022) Mars, a molecule archive suite for reproducible analysis and reporting of single-molecule properties from bioimages. eLife, 11:e75899. [doi: 10.7554/eLife.75899](https://doi.org/10.7554/eLife.75899)
 
 **Trackmate**
 
